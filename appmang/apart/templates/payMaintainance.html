@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+
+	<title>View Maintenance</title>
+
+	<link rel="stylesheet" href="C:\Users\Sagar\apartment\appmang\apart\templates\css\all.css">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+</head>
+<body class="bgSet" >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a href="{% url 'logoutPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Logout</button></a>
+      <a href="{% url 'Welcomepage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Home</button></a>
+      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> 
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+        
+        </div>
+      </nav>
+
+      <h4>Welcome {{ user }}!</h4>
+  
+    <br><br><br><br><br>
+  <center>
+      <h4 class="alert-heading">Pay Maintainance</h4>
+  </center>
+  
+  <div class="container-sm"  style="width: 30rem;">
+    <form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <input type="text" class="form-control" name='usid' id='usid' placeholder="user id" value="{{ user }}" >
+    </div>
+    <br>
+    <div class="form-group">
+      <input type="date" class="form-control" name='mon' id='mon'>
+    </div
+      
+      <br>
+      <div class="form-group">
+        <input type="text" class="form-control" name='trans' id='trans' placeholder="Transaction Id" >
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" name='amount' id='amount' placeholder="amount" value="1300">
+      </div>
+      
+      
+    
+     
+  
+      <button type="submit" class="btn btn-success">Pay</button>
+      
+    </form>
+  </div>
+  
+</body>
+</html>

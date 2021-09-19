@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	<script>
+		function goBack(){
+		  window.history.back();
+		}
+	  </script>
+	  </head>
+	  
+	  
+	  <body class="bgSet">
+		<div>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">   
+			  
+			  <a href="{% url 'logoutPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Logout</button></a>
+			  <a href="{% url 'scretarypage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Home</button></a>
+				  
+			</nav>
+		  </div>  
+  <br>
+
+  <br>
+  <h4>Welcome {{ user }}!</h4>
+  <div style="text-align:center; background-color: white; border-radius:15px;">
+		<center>
+			<table border="2"  width="65%" align="center;" style="margin: 0px auto;">
+				<tr>
+					<td><b>Name</b></td>
+			    	<td><b>Phone</b></td>
+			    	<td><b>Flat NO</b></td>
+					<td><b>Email</b></td>
+          			<td><b>Type</b></td>
+				<tr>
+				<br>
+				{% for dis in homowner %}
+				<tr>
+					<td>{{dis.name}}</td>
+					<td>{{dis.phono}}</td>
+					<td>{{dis.flat}}</td>
+					<td>{{dis.emailid}}</td>
+					<td>{{dis.Type}}</td>
+					
+				<tr>
+				{% endfor %}
+			</table>
+		</center>
+	</div>
+
+</body>
+</html>

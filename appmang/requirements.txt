@@ -1,0 +1,5 @@
+Django==3.1.4
+mysqlclient==2.0
+Flask==2.0
+mysql-connector
+Pillow

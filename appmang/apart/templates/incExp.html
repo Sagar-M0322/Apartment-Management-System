@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Income & Expenditure</title>
+
+	<link rel="stylesheet" href="C:\Users\Sagar\apartment\appmang\apart\templates\css\all.css">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<script>
+			function goBack(){
+			  window.history.back();
+			}
+		  </script>
+		  
+		  </head>
+		  
+		  
+		  <body class="bgSet">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			  <a href="{% url 'logoutPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Logout</button></a>
+			  <a href="" style="float: left; margin: 10px"><button class="btn btn-primary">Back</button></a>
+      			<script src="script.js"></script>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+			  
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  
+				
+				</div>
+			  </nav>
+	  </div>  
+
+	<br><br><br><br><br>
+
+	<center>
+		<div style="background-color: var(--lightGrey); max-width: 1000px; border-radius: 15px">
+			
+
+			<br>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-6">
+						<font size="4"><strong>Income this month</strong></font>
+						<br><br>
+						{{ income|safe }}
+					</div>
+					<div class="col-sm-6">
+						<font size="4"><strong>Expenses this month</strong></font>
+						<br><br>
+						{{ expense|safe }}
+					</div>
+				</div>
+			</div>
+			<br>
+			{{ monthNet|safe }}
+			<br><br>
+		</div>
+	</center>
+
+</body>
+</html>

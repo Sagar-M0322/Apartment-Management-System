@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Owner Details</title>
+
+	<link rel="stylesheet" href="C:\Users\Sagar\apartment\appmang\apart\templates\css\all.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body class="bgSet">
+	<div>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">   
+		  
+		  <a href="{% url 'logoutPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Logout</button></a>
+		  <a href="{% url 'Welcomepage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Home</button></a>
+			  
+		</nav>
+	  </div>  
+	<br><br><br>
+	<br>
+
+	<div class="container-fluid">
+
+		<div class="row">
+
+			<div class="col-md-3">
+
+				<div class="roundCorner" style="background-color: var(--lightGrey); padding: 10px">
+
+					<center>
+						<img src="{{ photo }}" style="width: 100px;" id="usrImg" data-toggle="modal" data-target="#editPhotoModal">
+						<br>
+						<strong id="usrName">{{ name }}</strong>
+						<br>
+						<font id="usrEmail">{{ email }}</font>
+						<br>
+						<font id="usrMobile">{{ mobile }}</font>
+					</center>
+
+				</div>
+
+			</div>
+			<form method="POST">
+				{% csrf_token %}
+
+			<div class="col-md-9">
+
+				<div class="row roundCorner" style="background-color: var(--lightGrey); padding: 10px">
+
+					<div class="col">
+
+						<center>
+
+							<table width="85%">
+
+								<tr>
+									<td><strong>Flat No:</strong></td>
+									<td><input type="text" class="form-control" name="flatNo" id="flatNo" ></td>
+									
+								</tr>
+
+								<tr>
+									<td><strong>Name:</strong></td>
+									<td><input type="text" class="form-control" name="name"  id="name" ></td>
+								
+								</tr>
+
+								<tr>
+									<td><strong>Email:</strong></td>
+									<td><input type="email" class="form-control" name="email" id="email" ></td>
+									
+								</tr>
+
+								<tr>
+									<td><strong>DOB:</strong></td>
+									<td><input type="date" class="form-control" name="dob"  id="dob" ></td>
+									
+								</tr>
+
+								<tr>
+									<td><strong>Occupation:</strong></td>
+									<td><input type="text" name="occupation" ></td>
+									
+								</tr>
+
+								<tr>
+									<td><strong>Communication Address:</strong></td>
+									<td><textarea name="comm_address" id="comm_address"></textarea></td>
+									
+								</tr>
+
+								<tr>
+									<td><input type="checkbox" id="sameAddrCheck" style="float: right" onclick="copyAddress()"></td>
+									<td>Copy from above address</td>
+								</tr>
+
+								<tr>
+									<td><strong>Permanent Address:</strong></td>
+									<td><textarea name="perm_address" id="perm_address" ></textarea></td>
+									
+								</tr>
+
+								
+							</table>
+
+						</center>
+
+					</div>
+					<div class="col">
+
+						<center>
+
+							<table width="85%">
+
+								<tr>
+									<td><strong>ID Proof</strong></td>
+									<td><input type="file" class="btn btn-info"  data-toggle="modal" name="idproof" id="idproof"></td>
+									
+									
+								</tr>
+
+								<tr>
+									<td><strong>Communication Address Proof</strong></td>
+									<td><input type="file" class="btn btn-info"  data-toggle="modal" name="CommAddProof" id="CommAddProof"></td>
+								
+								</tr>
+
+								<tr>
+									<td><strong>Permanent Address Proof</strong></td>
+									<td><input type="file" class="btn btn-info"  data-toggle="modal" name="PermAddProof" id="PermAddProof"></td>
+								
+								</tr>
+
+								
+
+							</table>
+
+						</center>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+	<center><button type="submit" class="btn btn-success" data-toggle="modal">Submit</button></center>
+</form>
+
+	<div class="modal fade" id="editPhotoModal">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-body" id="editPhotoModalHead">
+	    			<button type="button" class="close zoom" data-dismiss="modal">&times;</button>
+	    			<center><font style="display: block;"><strong>Update Photo</strong></font></center>
+	    		</div>
+	    		<div class="modal-body" style="max-height: 450px; overflow: scroll;" id="editPhotoModalBody">
+	    			<form action="/editHomeOwnPhoto" method="POST" enctype = "multipart/form-data">
+	    				<input type="file" name="photoFile"/>
+	    				<input type="submit" value="Update Photo" />
+	    			</form>
+
+	    		</div>
+		    </div>
+		</div>
+	</div>
+	
+
+	<div class="modal fade" id="uploadIdProofModal">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-body" id="uploadIdProofModalHead">
+	    			<button type="button" class="close zoom" data-dismiss="modal">&times;</button>
+	    			<center><font style="display: block;"><strong>Upload ID Proof</strong></font></center>
+	    		</div>
+	    		<div class="modal-body" style="max-height: 450px; overflow: scroll;" id="uploadIdProofModalBody">
+	    			<form action="/uploadHomeOwnIdProof" method="POST" enctype = "multipart/form-data">
+	    				<input type="file" name="photoFile"/>
+	    				<input type="submit" value="Upload ID Proof" />
+	    			</form>
+
+	    		</div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="uploadCommAddProofModal">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-body" id="uploadCommAddProofModalHead">
+	    			<button type="button" class="close zoom" data-dismiss="modal">&times;</button>
+	    			<center><font style="display: block;"><strong>Upload Address Proof</strong></font></center>
+	    		</div>
+	    		<div class="modal-body" style="max-height: 450px; overflow: scroll;" id="uploadCommAddProofModalBody">
+	    			<form action="/uploadHomeOwnCommAddrProof" method="POST" enctype = "multipart/form-data">
+	    				<input type="file" name="photoFile"/>
+	    				<input type="submit" value="Upload Communication Address Proof" />
+	    			</form>
+
+	    		</div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="uploadPermAddProofModal">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-body" id="uploadPermAddProofModalHead">
+	    			<button type="button" class="close zoom" data-dismiss="modal">&times;</button>
+	    			<center><font style="display: block;"><strong>Upload Permanent Address Proof</strong></font></center>
+	    		</div>
+	    		<div class="modal-body" style="max-height: 450px; overflow: scroll;" id="uploadPermAddProofModalBody">
+	    			<form action="/uploadHomeOwnPermAddrProof" method="POST" enctype = "multipart/form-data">
+	    				<input type="file" name="photoFile"/>
+	    				<input type="submit" value="Upload Permanent Address Proof" />
+	    			</form>
+
+	    		</div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="uploadSaleDeedModal">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-body" id="uploadSaleDeedModalHead">
+	    			<button type="button" class="close zoom" data-dismiss="modal">&times;</button>
+	    			<center><font style="display: block;"><strong>Upload Permanent Address Proof</strong></font></center>
+	    		</div>
+	    		<div class="modal-body" style="max-height: 450px; overflow: scroll;" id="uploadSaleDeedModalBody">
+	    			<form action="/uploadHomeOwnSaleDeed" method="POST" enctype = "multipart/form-data">
+	    				<input type="file" name="photoFile"/>
+	    				<input type="submit" value="Upload Sale Deed" />
+	    			</form>
+
+	    		</div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="viewIdProofModal">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-body" id="viewIdProofModalHead">
+	    			<button type="button" class="close zoom" data-dismiss="modal">&times;</button>
+	    			<center><font style="display: block;"><strong>ID Proof</strong></font></center>
+	    		</div>
+	    		<div class="modal-body" style="max-height: 450px; overflow: scroll;" id="viewIdProofModalBody">
+	    			<center>
+	    				{{ idProof|safe }}
+	    			</center>
+	    		</div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="viewCommAddProofModal">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-body" id="viewCommAddProofModalHead">
+	    			<button type="button" class="close zoom" data-dismiss="modal">&times;</button>
+	    			<center><font style="display: block;"><strong>Communication Address Proof</strong></font></center>
+	    		</div>
+	    		<div class="modal-body" style="max-height: 450px; overflow: scroll;" id="viewCommAddProofModalBody">
+	    			<center>
+	    				{{ commAddProof|safe }}
+	    			</center>
+	    		</div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="viewPermAddProofModal">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-body" id="viewPermAddProofModalHead">
+	    			<button type="button" class="close zoom" data-dismiss="modal">&times;</button>
+	    			<center><font style="display: block;"><strong>Permanent Address Proof</strong></font></center>
+	    		</div>
+	    		<div class="modal-body" style="max-height: 450px; overflow: scroll;" id="viewPermAddProofModalBody">
+	    			<center>
+	    				{{ permAddProof|safe }}
+	    			</center>
+	    		</div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="viewSaleDeedModal">
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<div class="modal-body" id="viewSaleDeedModalHead">
+	    			<button type="button" class="close zoom" data-dismiss="modal">&times;</button>
+	    			<center><font style="display: block;"><strong>Sale Deed</strong></font></center>
+	    		</div>
+	    		<div class="modal-body" style="max-height: 450px; overflow: scroll;" id="viewSaleDeedModalBody">
+	    			<center>
+	    				{{ saleDeed|safe }}
+	    			</center>
+	    		</div>
+		    </div>
+		</div>
+	</div>
+</body>
+
+<script>
+	function copyAddress(){
+		copyCheck = document.getElementById('sameAddrCheck');
+
+		if (copyCheck.checked){
+			cAdd = document.getElementById('comm_address');
+			pAdd = document.getElementById('perm_address');
+
+			pAdd.value = cAdd.value;
+
+			
+		}
+	}
+</script>
+</html>

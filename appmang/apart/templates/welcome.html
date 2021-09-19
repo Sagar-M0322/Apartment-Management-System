@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<style type="text/css">
+		.bgSet{
+		background-image: url("{% static 'images/im.png' %}");
+		  background-repeat: no-repeat;
+		  background-attachment: fixed;
+		  background-size: 100% 100%;
+		}
+
+		.tab{
+		  margin: 50px 0;
+		}
+		.tab img{
+		  width: 75%;
+		  padding : 20px 0;
+		  transition: 1s;
+		  cursor: pointer;
+		  
+		}
+		.tab img:hover{
+		  transform: scale(1.1);
+
+		}
+		label{
+		  font-size:  20px;
+		}
+	  </style>
+    </head>
+    
+    <div class="bgSet">
+      <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">   
+          
+          <a href="{% url 'logoutPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Logout</button></a>
+          <a href="{% url 'Welcomepage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Home</button></a>
+              
+        </nav>
+      </div>  
+
+      
+
+	  <br>
+	  <h4>Welcome {{ user }}!</h4>
+
+
+	  
+
+					
+					
+			
+
+        <section class="tab">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <a href="{%url 'Adddetails' %}"><img src="{% static 'images/home/addd.jpg' %}"></a>
+                <label>Add Details</label>
+              </div>
+              <div class="col">
+                <a href="{%url 'duespage' %}"><img src="{% static 'images/home/payd.jpg' %}"></a>
+                <label>Dues payment</label>
+              </div>
+              <div class="col">
+                <a href="{% url 'paymentpage'%}"><img src="{% static 'images/home/pay.jpg' %}"></a>
+                <label>Payment</label>
+              </div>
+              <div class="col">
+                <a href="{% url 'complaintpage'%}"><img src="{% static 'images/complaint.jpg' %}"></a>
+                <label>Write complaint</label>
+              </div>
+            </div>
+            
+          </div>
+          
+        </section>
+
+
+			
+
+	
+          
+  
+             
+    
+    </body>
+    </html>

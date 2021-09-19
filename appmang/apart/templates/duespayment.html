@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Make Payments</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<body class="bgSet">
+	<div>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">   
+		  
+		  <a href="{% url 'logoutPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Logout</button></a>
+		  <a href="{% url 'Welcomepage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Home</button></a>
+			  
+		</nav>
+	  </div>  
+	<br>
+	<h4>Welcome {{ user }}!</h4>
+	<br><br><br><br><br>
+
+  <center>
+        <div class="roundCorner" style="background-color: var(--lightGrey); padding: 10px; max-width: 500px">
+						<center>
+                {{ income|safe }}
+                <h6>{{ payDet | safe}}</h6>
+            </center>
+        </div>
+  </center>
+
+  
+  </body>
+  </html>

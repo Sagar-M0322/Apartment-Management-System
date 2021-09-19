@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    {% load static%}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximun-scale=1,minimun-scale=1">
+        <title>Login Page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+    </head>
+    <body>
+    
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a href="{% url 'registerPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Register</button></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+              
+                
+               
+              </ul>
+            
+            </div>
+          </nav>
+
+          <center>
+            <br><br><br><br><br>
+          
+            <div style="background-color: var(--lightGrey); max-width: 500px; border-radius: 15px">
+              <br><br>
+              <font style="font-size: 20px"><strong>Log In to Your Account</strong></font><br><br>
+        
+                    <form method="POST">
+                      {% csrf_token %}
+                        <input type="text" class="form-control" id="username" name="username" placeholder=" Username"  style="text-align: center; width: 400px" onkeyup="checkEntry()"><br>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" style="text-align: center; margin-top: -10px; width: 400px" onkeyup="checkEntry()"><br>
+        
+                        <button type="submit" id="login" class="btn btn-success">Login</button>
+                    
+        
+                    <br><br><br><br><br>
+                      Not a user already? <a href="{% url 'registerPage'%}">Register</a>
+                      {% for msg in messages%}
+                        <h6 style="color: red;">{{ msg }}</h6>
+                      {% endfor%}
+            
+                      </form>
+              <br><br>
+            </div>
+          </center>
+    
+       
+          
+    </body>
+    </html>

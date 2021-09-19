@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Financial Status</title>
+
+	
+        
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<script>
+			function goBack(){
+			  window.history.back();
+			}
+		  </script>
+		  </head>
+		  
+		  
+		  <body class="bgSet">
+			<div>
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">   
+				  
+				  <a href="{% url 'logoutPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Logout</button></a>
+				  <a href="{% url 'scretarypage' %}" style="float: left; margin: 10px"><button id="back" onclick="goBack()" class="btn btn-primary">back</button></a>
+					  
+				</nav>
+			  </div>  
+	<br><br><br><br><br>
+
+	<center>
+		<div style="background-color: var(--lightGrey); max-width: 1000px; border-radius: 15px">
+
+			<br>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-6">
+						<font size="4"><strong>Total Income</strong></font>
+						<br><br>
+						{{ income|safe }}
+					</div>
+					<div class="col-sm-6">
+						<font size="4"><strong>Total Expense</strong></font>
+						<br><br>
+						{{ expense|safe }}
+					</div>
+				</div>
+			</div>
+			<br>
+			{{ finStat|safe }}
+			<br><br>
+		</div>
+	</center>
+	
+</body>
+</html>

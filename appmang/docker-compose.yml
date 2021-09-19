@@ -1,0 +1,23 @@
+version: "20.10.8"
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    volumes:
+      - ./tmp/mysql/mysqld:/var/run/mysqld
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: "Apartmang"
+      MYSQL_USER: "root"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+
+    volumes:
+      - ./data/mysql/db:/var/lib/mysql
+      - ./tmp/mysql/mysqld:/var/run/mysqld

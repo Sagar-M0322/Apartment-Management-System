@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+	<style type="text/css">
+		.bgSet{
+		background-image: url("{% static 'images/im.png' %}");
+		  background-repeat: no-repeat;
+		  background-attachment: fixed;
+		  background-size: 100% 100%;
+		}
+
+		.tab{
+		  margin: 50px 0;
+		}
+		.tab img{
+		  width: 75%;
+		  padding : 20px 0;
+		  transition: 1s;
+		  cursor: pointer;
+		  
+		}
+		.tab img:hover{
+		  transform: scale(1.1);
+
+		}
+		label{
+		  font-size:  20px;
+		}
+	  </style>
+</head>
+
+
+<body class="bgSet">
+	<div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">   
+          
+          <a href="{% url 'logoutPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Logout</button></a>
+          <a href="" style="float: left; margin: 10px"><button class="btn btn-primary">Back</button></a>
+      		<script src="script.js"></script>
+              
+        </nav>
+      </div>  
+	<br>
+  <center><h1>TREASURER PAGE</h1></center>
+  
+  <h4>Welcome {{ user }}!</h4>
+
+  
+  
+  <section class="tab">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <a href="{% url 'financestatpage'%}"><img src="{% static 'images/fs.jpg' %}"></a>
+          <label>Financial Status</label>
+        </div>
+        <div class="col">
+          <a href="{% url 'viewmainpage'%}"><img src="{% static 'images/du.jpg' %}"></a>
+          <lable style="font-size: 20px;">Maintainance Dues</lable>
+        </div>
+        <div class="col">
+          <a href="{%url 'incexppage'%}"><img src="{% static 'images/income.png' %}"></a>
+          <lable style="font-size: 20px;">Income Expenditure</lable>
+        </div>
+		<div class="col">
+			<a href="{% url 'Addexpnpage'%}"><img src="{% static 'images/home/adex.JPG' %}"></a>
+			<label>Add Expense</label>
+		</div>
+		<div class="col">
+			<a href="{% url 'Addincomepage'%}"><img src="{% static 'images/home/adin.JPG' %}"></a>
+			<lable style="font-size: 20px;">Income</lable>
+		</div>
+      </div>
+      
+    </div>
+    
+  </section>
+
+
+</body>
+</html>

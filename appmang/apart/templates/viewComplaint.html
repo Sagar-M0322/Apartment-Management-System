@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+
+	<link rel="stylesheet" href="C:\Users\Sagar\apartment\appmang\apart\templates\css\all.css">  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script>
+  function goBack(){
+    window.history.back();
+  }
+</script>
+</head>
+
+
+<body class="bgSet">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a href="{% url 'logoutPage'%}" style="float: left; margin: 10px"><button class="btn btn-primary">Logout</button></a>
+		<a href="{% url 'scretarypage' %}" style="float: left; margin: 10px"><button class="btn btn-primary" onclick="goBack()">Back</button></a>
+				  <script src="script.js"></script>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	
+		  
+		  </div>
+		</nav>
+
+
+
+
+
+  
+	<br>
+  <br>
+  <br>
+  <br>
+  <div class="container-fluid">
+		<div class="row">
+      <div class="col-md-9">
+        <div class="row roundCorner" style="background-color: var(--lightGrey); padding: 10px">
+          <div class="col">
+						<center>
+							<table width="85%" align="center;" style="margin: 0px auto;">
+                <tr>
+                  <td><strong>ID</strong></td>
+                  <td><strong>category</strong></td>
+                  <td><strong>Complaint</strong></td>
+                  <td><strong>Date</strong></td>
+                  
+                </tr>
+                {% for row in compaint %}
+                  <tr>
+                    <td>{{row.uid}}</td>
+                    <td>{{row.category}}</td>
+                    <td>{{row.reason}}</td>
+                    <td>{{row.dt}}</td>
+                   
+                    
+                  </tr>
+                {% endfor %}
+              </table>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
